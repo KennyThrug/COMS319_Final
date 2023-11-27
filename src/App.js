@@ -1,14 +1,14 @@
 import logo from './logo.svg';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { renderPostPage } from './Pages/PostPage';
 import { renderCreatePostPage } from './Pages/CreatePostPage';
-import { renderOtherPage } from './Pages/OtherPage';
+import { renderAboutPage, renderOtherPage } from './Pages/AboutPage';
 import './App.css';
 
 //3 const variables that are used for keeping track of different states. Should be optimized into just numbers, but idk much about the Javascript Compiler
 const STATE_POST_PAGE = 0;
 const STATE_CREATE_POST_PAGE = 1;
-const STATE_OTHER_PAGE = 2;
+const STATE_ABOUT_PAGE = 2;
 
 //Entrypoint of the app
 function App() {
@@ -16,8 +16,8 @@ function App() {
   return (
     <div>
       {createBanner(setPageId)}
-      <div style={{marginLeft: "20%"}}>
-        {renderPage(PageId,setPageId)}
+      <div style={{ marginLeft: "15%" }}>
+        {renderPage(PageId, setPageId)}
       </div>
     </div>
   )
@@ -25,32 +25,52 @@ function App() {
 
 //Function that returns the html for the banner, which is used for every page
 //TODO: Find a better color and make this banner look better
-function createBanner(setPageId){
+function createBanner(setPageId) {
   return (
-    <div style={{position: 'fixed', width: '20%', height: "100%", border: 'solid', backgroundColor: "grey"}}>
-      <button onClick={() => setPageId(STATE_POST_PAGE)}>
-        Posts
-      </button>
-      <button onClick={() => setPageId(STATE_CREATE_POST_PAGE)}>
-        Create Post
-      </button>
-      <button onClick={() => setPageId(STATE_OTHER_PAGE)}>
-        Some Other Page
-      </button>
-    </div>
+    <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+      <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+          <li>
+            <button style={{width: "100%"}} onClick={() => setPageId(STATE_POST_PAGE)} class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <span class="ms-3">Dashboard</span>
+            </button>
+          </li>
+          <li>
+            <button style={{width: "100%"}} onClick={() => setPageId(STATE_CREATE_POST_PAGE)} class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <span class="ms-3 whitespace-nowrap">Create Post</span>
+            </button>
+          </li>
+          <li>
+            <button style={{width: "100%"}} onClick={() => setPageId(STATE_ABOUT_PAGE)} class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <span class="ms-3 whitespace-nowrap">About Us</span>
+            </button>
+          </li>
+          <li>
+            <button style={{width: "100%"}} onClick={() => setPageId(STATE_CREATE_POST_PAGE)} class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <span class="ms-3 whitespace-nowrap">Sign In</span>
+            </button>
+          </li>
+          <li>
+            <button style={{width: "100%"}} onClick={() => setPageId(STATE_CREATE_POST_PAGE)} class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <span class="ms-3 whitespace-nowrap">Sign Up</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </aside>
   );
 }
 
 //Function that handles switching between pages, as well as passing any neccesary variables to those pages
-function renderPage(PageID,setPageId){
-  if(PageID == STATE_POST_PAGE){
+function renderPage(PageID, setPageId) {
+  if (PageID == STATE_POST_PAGE) {
     return renderPostPage();
   }
-  if(PageID == STATE_CREATE_POST_PAGE){
+  if (PageID == STATE_CREATE_POST_PAGE) {
     return renderCreatePostPage();
   }
-  if(PageID == STATE_OTHER_PAGE){
-    return renderOtherPage();
+  if (PageID == STATE_ABOUT_PAGE) {
+    return renderAboutPage();
   }
   return (
     <div>
