@@ -1,10 +1,9 @@
 
-export function renderPostPage(post) {
-    //Change to a get from the database API
+export function renderAllPostPage(posts) {
     return (
         <div>
             <br></br><br></br>
-            {post.map((cur_post, index) => (
+            {posts.map((cur_post, index) => (
                 <div style={{ marginLeft: "30%", marginRight: "30%", }}>
                     <div style={{ border: "solid" }}>
                         <h1>
@@ -18,6 +17,24 @@ export function renderPostPage(post) {
                     </div>
                 </div>
             ))}
+        </div>
+    )
+}
+
+//Should be a single post, not all posts
+export function renderSinglePost(posts, index) {
+    return (
+        <div style={{ marginLeft: "30%", marginRight: "30%", }}>
+            <div style={{ border: "solid" }}>
+                <h1>
+                    Post Title: {posts[index].postTitle}
+                </h1>
+            </div>
+            <div>
+                <p>
+                    Post Contents: {posts[index].postContents}
+                </p>
+            </div>
         </div>
     )
 }

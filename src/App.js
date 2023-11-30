@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
-import { renderPostPage } from './Pages/PostPage';
+import { renderAllPostPage, renderSinglePost } from './Pages/PostPage';
 import { renderCreatePostPage } from './Pages/CreatePostPage';
 import { renderAboutPage, renderOtherPage } from './Pages/AboutPage';
 import { createSideBanner, createTopBanner } from './banners';
@@ -12,18 +12,22 @@ export const STATE_POST_PAGE = 0;
 export const STATE_CREATE_POST_PAGE = 1;
 export const STATE_ABOUT_PAGE = 2;
 export const STATE_LOGIN_PAGE = 3;
+export const STATE_SINGLE_POST = 4;
 
 //Entrypoint of the app
 function App() {
+  //PageID determines what page you are currently on
   const [PageId, setPageId] = useState(STATE_POST_PAGE);
-  const [DarkMode, setDarkMode] = useState(true);
+  //PostID determines what post you are currently looking at, always updated at the same time as changing a page (see side banner)
+  const [PostIndex, setPostIndex] = useState(0);
+      //Change to a get from the database API
   let posts = placeholder_posts();
   return (
     <div>
-      {createSideBanner(setPageId,posts)}
+      {createSideBanner(setPageId,posts,setPostIndex)}
       {createTopBanner(setPageId)}
       <div style={{ marginLeft: "15%" }}>
-        {renderPage(PageId, setPageId,DarkMode,posts)}
+        {renderPage(PageId,posts,PostIndex)}
       </div>
     </div>
   )
@@ -31,9 +35,9 @@ function App() {
 }
 
 //Function that handles switching between pages, as well as passing any neccesary variables to those pages
-function renderPage(PageID, setPageId,DarkMode,posts) {
+function renderPage(PageID,posts,PostIndex) {
   if (PageID == STATE_POST_PAGE) {
-    return renderPostPage(posts);
+    return renderAllPostPage(posts);
   }
   if (PageID == STATE_CREATE_POST_PAGE) {
     return renderCreatePostPage();
@@ -43,6 +47,9 @@ function renderPage(PageID, setPageId,DarkMode,posts) {
   }
   if (PageID == STATE_LOGIN_PAGE){
     return renderLoginPage();
+  }
+  if (PageID == STATE_SINGLE_POST){
+    return renderSinglePost(posts,PostIndex);
   }
   return (
     <div>
@@ -62,7 +69,7 @@ function placeholder_posts() {
   return [
       {
           id: 0,
-          postTitle: "Placeholder Post Title",
+          postTitle: "Placeholder #1",
           tags: [
               "Fantasy",
               "TestPost",
@@ -78,7 +85,7 @@ function placeholder_posts() {
       },
       {
           id: 0,
-          postTitle: "Placeholder Post Title",
+          postTitle: "Placeholder #2",
           tags: [
               "Fantasy",
               "TestPost",
