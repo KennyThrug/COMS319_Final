@@ -3,32 +3,32 @@ import { STATE_POST_PAGE, STATE_CREATE_POST_PAGE, STATE_ABOUT_PAGE, STATE_LOGIN_
 export function createTopBanner(setPageId) {
     return (
         <div style={{ borderBottom: "solid", borderColor: "gray", position: "fixed", width: "100%" }}>
-            <nav class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-6">
-                <div class="flex items-center flex-shrink-0 text-white mr-6" style={{ marginLeft: "13%" }}>
-                    <span class="font-semibold text-xl tracking-tight">Blog Name</span>
+            <nav className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-6">
+                <div className="flex items-center flex-shrink-0 text-white mr-6" style={{ marginLeft: "13%" }}>
+                    <span className="font-semibold text-xl tracking-tight">Blog Name</span>
                 </div>
-                <div class="block lg:hidden">
-                    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-                        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+                <div className="block lg:hidden">
+                    <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+                        <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
                     </button>
                 </div>
-                <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                    <div class="text-sm lg:flex-grow">
-                        <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                    <div className="text-sm lg:flex-grow">
+                        <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             About Us
                         </a>
-                        <a href='#' onClick={() => setPageId(STATE_POST_PAGE)} class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        <a href='#' onClick={() => setPageId(STATE_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             All Posts
                         </a>
-                        <a href='#' onClick={() => setPageId(STATE_CREATE_POST_PAGE)} class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        <a href='#' onClick={() => setPageId(STATE_CREATE_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             Create Post
                         </a>
-                        <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                        <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                             Search
                         </a>
                     </div>
                     <div>
-                        <a href='#' onClick={() => setPageId(STATE_LOGIN_PAGE)} class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign in</a>
+                        <a href='#' onClick={() => setPageId(STATE_LOGIN_PAGE)} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign in</a>
                     </div>
                 </div>
             </nav>
