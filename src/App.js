@@ -14,21 +14,44 @@ export const STATE_ABOUT_PAGE = 2;
 export const STATE_LOGIN_PAGE = 3;
 export const STATE_SINGLE_POST = 4;
 
+let recentlyLoaded = false;
+
+function getMethod(Posts, setPosts) {
+  fetch("http://localhost:8081/getAllPosts")
+    .then((response) => response.json())
+    .then((data) => {
+      setPosts(data);
+      console.log(Posts);
+    });
+}
+
 //Entrypoint of the app
 function App() {
   //PageID determines what page you are currently on
   const [PageId, setPageId] = useState(STATE_POST_PAGE);
   //PostID determines what post you are currently looking at, always updated at the same time as changing a page (see side banner)
   const [PostIndex, setPostIndex] = useState(0);
-  //Change to a get from the database API
-  let posts = placeholder_posts();
+
+  const [Posts, setPosts] = useState([]);
+
+  if(!recentlyLoaded)
+  {
+    getMethod(Posts, setPosts);
+    recentlyLoaded = true;
+  }
+  else
+  {
+    recentlyLoaded = false;
+  }
+
+  
   return (
     <div>
-      {createSideBanner(setPageId, posts, setPostIndex)}
+      {createSideBanner(setPageId, Posts, setPostIndex)}
       {createTopBanner(setPageId)}
       <br></br><br></br><br></br><br></br>
       <div style={{ marginLeft: "15%" }}>
-        {renderPage(PageId, posts, PostIndex)}
+        {renderPage(PageId, Posts, PostIndex)}
       </div>
     </div>
   )
