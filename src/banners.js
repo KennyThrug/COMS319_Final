@@ -23,12 +23,14 @@ export function createTopBanner(setPageId) {
                         <a href='#' onClick={() => setPageId(STATE_CREATE_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             Create Post
                         </a>
-                        <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                        {/* The following Objects are not gone, but they currently have no functionality, so they are temporarily hidden for Phase 2*/}
+                        {/* <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                             Search
                         </a>
                     </div>
                     <div>
                         <a href='#' onClick={() => setPageId(STATE_LOGIN_PAGE)} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign in</a>
+    */}
                     </div>
                 </div>
             </nav>
