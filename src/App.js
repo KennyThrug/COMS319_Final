@@ -40,15 +40,10 @@ function App() {
 
   const [Posts, setPosts] = useState([]);
 
-  if(!recentlyLoaded)
+  React.useEffect(() =>
   {
     getMethod(Posts, setPosts);
-    recentlyLoaded = true;
-  }
-  else
-  {
-    recentlyLoaded = false;
-  }
+  },[]);
 
   
   return (
