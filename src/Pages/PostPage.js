@@ -2,7 +2,6 @@
 export function renderAllPostPage(posts) {
     return (
         <div>
-            <br></br><br></br><br></br><br></br>
             {posts.map((cur_post, index) => (
                 <div style={{ marginLeft: "30%", marginRight: "30%"}}>
                     <div style={{ border: "solid" }}>
@@ -25,7 +24,6 @@ export function renderAllPostPage(posts) {
 export function renderSinglePost(posts, index) {
     return (
         <div style={{ marginLeft: "30%", marginRight: "30%"}}>
-                    <br></br><br></br><br></br><br></br>
             <div style={{ border: "solid" }}>
                 <h1>
                     Post Title: {posts[index].postTitle}
