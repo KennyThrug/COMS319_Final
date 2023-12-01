@@ -50,7 +50,7 @@ function App() {
       {createTopBanner(setPageId)}
       <br></br><br></br><br></br><br></br>
       <div style={{ marginLeft: "15%" }}>
-        {renderPage(PageId, Posts, PostIndex,Preview,setPreview)}
+        {renderPage(PageId, Posts, PostIndex,Preview,setPreview,Posts,setPosts)}
       </div>
     </div>
   )
@@ -58,12 +58,12 @@ function App() {
 }
 
 //Function that handles switching between pages, as well as passing any neccesary variables to those pages
-function renderPage(PageID, posts, PostIndex,Preview,setPreview) {
+function renderPage(PageID, posts, PostIndex,Preview,setPreview,Posts, setPosts) {
   if (PageID == STATE_POST_PAGE) {
     return renderAllPostPage(posts);
   }
   if (PageID == STATE_CREATE_POST_PAGE) {
-    return renderCreatePostPage(Preview,setPreview);
+    return renderCreatePostPage(Preview,setPreview,Posts, setPosts);
   }
   if (PageID == STATE_ABOUT_PAGE) {
     return renderAboutPage();
