@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
-import { renderAllPostPage, renderSinglePost } from './Pages/PostPage';
+import { renderAllPostPage, renderSinglePost, renderSinglePostFromArray } from './Pages/PostPage';
 import { renderCreatePostPage } from './Pages/CreatePostPage';
 import { renderAboutPage, renderOtherPage } from './Pages/AboutPage';
 import { createSideBanner, createTopBanner } from './banners';
@@ -20,6 +20,12 @@ function App() {
   const [PageId, setPageId] = useState(STATE_POST_PAGE);
   //PostID determines what post you are currently looking at, always updated at the same time as changing a page (see side banner)
   const [PostIndex, setPostIndex] = useState(0);
+  //This is only used on the "Create Post" page, and should be ignored otherwise
+  const [Preview, setPreview] = useState((
+    <div>
+        Error: This should Never be visible
+    </div>
+));
   //Change to a get from the database API
   let posts = placeholder_posts();
   return (
@@ -28,7 +34,7 @@ function App() {
       {createTopBanner(setPageId)}
       <br></br><br></br><br></br><br></br>
       <div style={{ marginLeft: "15%" }}>
-        {renderPage(PageId, posts, PostIndex)}
+        {renderPage(PageId, posts, PostIndex,Preview,setPreview)}
       </div>
     </div>
   )
@@ -36,12 +42,12 @@ function App() {
 }
 
 //Function that handles switching between pages, as well as passing any neccesary variables to those pages
-function renderPage(PageID, posts, PostIndex) {
+function renderPage(PageID, posts, PostIndex,Preview,setPreview) {
   if (PageID == STATE_POST_PAGE) {
     return renderAllPostPage(posts);
   }
   if (PageID == STATE_CREATE_POST_PAGE) {
-    return renderCreatePostPage();
+    return renderCreatePostPage(Preview,setPreview);
   }
   if (PageID == STATE_ABOUT_PAGE) {
     return renderAboutPage();
@@ -50,7 +56,7 @@ function renderPage(PageID, posts, PostIndex) {
     return renderLoginPage();
   }
   if (PageID == STATE_SINGLE_POST) {
-    return renderSinglePost(posts, PostIndex);
+    return renderSinglePostFromArray(posts, PostIndex);
   }
   return (
     <div>
@@ -104,7 +110,7 @@ function placeholder_posts() {
       postContents: (
         <div>
           This is a second post, which should show up
-          <img style={{ float: "left" }} src="https://robohash.org/Ked"></img>
+          <img src="https://robohash.org/Ked"></img>
           That was an Inline Image, It seems to work
         </div>
       )
