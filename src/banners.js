@@ -2,7 +2,7 @@ import { STATE_POST_PAGE, STATE_CREATE_POST_PAGE, STATE_ABOUT_PAGE, STATE_LOGIN_
 //Function for Top Banner
 export function createTopBanner(setPageId) {
     return (
-        <div style={{ borderBottom: "solid", borderColor: "gray" }}>
+        <div style={{ borderBottom: "solid", borderColor: "gray", position: "fixed", width: "100%"}}>
             <nav class="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-6">
                 <div class="flex items-center flex-shrink-0 text-white mr-6" style={{ marginLeft: "13%" }}>
                     <span class="font-semibold text-xl tracking-tight">Blog Name</span>
