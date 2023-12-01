@@ -1,12 +1,9 @@
 import { renderSinglePost } from "./PostPage";
 import React, { useState } from 'react';
 
-let Preview_Toggle = true;
+let Preview_Toggle = false;
 
 export function renderCreatePostPage(Preview, setPreview) {
-    //This is kinda weird, so let me explain.
-    //Preview_Toggle = !Preview_Toggle;
-    //changeToPreview(setPreview);
     return (
         <div>
             <label class="relative inline-flex items-center cursor-pointer">
@@ -121,11 +118,7 @@ function getPostFromInput() {
         tags: [
             ""
         ],
-        postContents: (
-            <div>
-                {document.getElementById("AuthorTextBox").value}
-            </div>
-        )
+        postContents: document.getElementById("PostTextBox").value
     };
 }
 function changeToPreview(setPreview) {
@@ -136,16 +129,12 @@ function changeToPreview(setPreview) {
         document.getElementById("CreatePostPreview").style.display = 'none';
     }
     else { //Open the Prieview
-        //Try it, if an element is not filled in, will fail
         //Create the preview, and put it into the hidden element
         setPreview(renderSinglePost(getPostFromInput()))
-        //Hide the editor
+        //Hide the preview
         document.getElementById("CreatePostEditor").style.display = 'none';
-        //Make the Preview Visible
+        //Make the editor Visible
         document.getElementById("CreatePostPreview").style.display = 'block';
     }
     Preview_Toggle = !Preview_Toggle;
-}
-function changeToEditor() {
-
 }
