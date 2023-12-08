@@ -173,6 +173,18 @@ function editPost(Posts, setPosts) {
           </button>
         </div>
       </div>
+      {/* Help Section ------------------------------------- */}
+      <div>
+        <p style={{marginLeft: "20%"}}>
+          Helpful Hints: Insert an Image via {"<"}image url{">"}
+          <br></br>
+          If you want to use the {"<"} character on its own, use {"\\<"}, which will display as just {"<"}
+          <br></br>
+          If you want to use the {"\\"} character on its own, use {"\\\\"} which will display as a single {"\\"}
+          <br></br>
+          If you want to Bold a phrase, use **Phrase you want Bolded** which will display as <strong>Phrase you want Bolded</strong>
+        </p>
+      </div>
     </div>
   );
 }
@@ -186,9 +198,23 @@ function getPostFromInput() {
     date_published: document.getElementById("datePublishedTextBox").value,
     genres: [""],
     tags: [""],
-    postContents: document.getElementById("PostTextBox").value,
+    postContents: convertToFormat(document.getElementById("PostTextBox").value),
   };
 }
+
+function convertToFormat(text){
+  let result = "";
+  for(let i = 0; i < text.length; i++){
+    if(text[i] == "\n"){
+      result += "\\n"
+    }
+    else{
+      result += text[i];
+    }
+  }
+  return result;
+}
+
 function changeToPreview(setPreview) {
   if (Preview_Toggle) {
     //Open the Editor
