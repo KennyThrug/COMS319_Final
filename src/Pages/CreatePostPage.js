@@ -37,6 +37,7 @@ function getMethod(Posts, setPosts) {
 
 function postMethod(Posts, setPosts) {
   let x = getPostFromInput();
+  console.log(x);
   fetch("http://localhost:8081/post", {
     method: "POST",
     headers: {
@@ -64,7 +65,7 @@ function editPost(Posts, setPosts) {
       style={{
         position: "absolute",
         width: "60%",
-        height: "65%",
+        height: "75%",
         border: "solid",
         marginLeft: "10%",
       }}
@@ -173,6 +174,22 @@ function editPost(Posts, setPosts) {
           </button>
         </div>
       </div>
+      {/* Help Section ------------------------------------- */}
+      <div>
+        <p style={{marginLeft: "15%"}}>
+          Helpful Hints:
+          <br></br>
+           Insert an Image via {"<"}image url{">"}
+          <br></br>
+          If you want to use the {"<"} character on its own, use {"\\<"}, which will display as just {"<"}
+          <br></br>
+          If you want to use the {"\\"} character on its own, use {"\\\\"} which will display as a single {"\\"}
+          <br></br>
+          If you want to Bold a phrase, use **Phrase you want Bolded** which will display as <strong>Phrase you want Bolded</strong>
+          <br></br>
+          This can also be escaped with {"\\**"} which will display as **
+        </p>
+      </div>
     </div>
   );
 }
@@ -186,9 +203,31 @@ function getPostFromInput() {
     date_published: document.getElementById("datePublishedTextBox").value,
     genres: [""],
     tags: [""],
-    postContents: document.getElementById("PostTextBox").value,
+    postContents: convertToFormat(document.getElementById("PostTextBox").value),
   };
 }
+
+function convertToFormat(text){
+  let result = "";
+  for(let i = 0; i < text.length; i++){
+    //Both of the following numbers are character codes for Right Quote and Left Quote, which may be left over from copying from another program
+    if(text.charCodeAt(i) ==8220 || text.charCodeAt(i) == 8221){
+      console.log(i);
+      result += '"';
+    }
+    else if(text.charCodeAt(i) == 8217 || text.charCodeAt(i) == 8218){
+      result += "'";
+    } 
+    else if(text[i] == "\n"){
+      result += "\\n"
+    }
+    else{
+      result += text[i];
+    }
+  }
+  return result;
+}
+
 function changeToPreview(setPreview) {
   if (Preview_Toggle) {
     //Open the Editor
