@@ -5,6 +5,7 @@ import { renderCreatePostPage } from './Pages/CreatePostPage';
 import { renderAboutPage, renderOtherPage } from './Pages/AboutPage';
 import { createSideBanner, createTopBanner } from './banners';
 import { renderLoginPage } from './Pages/LoginPage';
+import { getMethod } from './FrontendAPI';
 import './App.css';
 
 //3 const variables that are used for keeping track of different states. Should be optimized into just numbers, but idk much about the Javascript Compiler
@@ -13,15 +14,6 @@ export const STATE_CREATE_POST_PAGE = 1;
 export const STATE_ABOUT_PAGE = 2;
 export const STATE_LOGIN_PAGE = 3;
 export const STATE_SINGLE_POST = 4;
-
-function getMethod(Posts, setPosts) {
-  fetch("http://localhost:8081/getAllPosts")
-    .then((response) => response.json())
-    .then((data) => {
-      setPosts(data);
-      console.log(Posts);
-    });
-}
 
 //Entrypoint of the app
 function App() {

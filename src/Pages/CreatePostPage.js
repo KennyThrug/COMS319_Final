@@ -1,5 +1,6 @@
 import { renderSinglePost } from "./PostPage";
 import React, { useState } from "react";
+import { postMethod } from "../FrontendAPI";
 
 let Preview_Toggle = false;
 
@@ -24,34 +25,6 @@ export function renderCreatePostPage(Preview, setPreview, Posts, setPosts) {
       <div id="CreatePostEditor">{editPost(Posts, setPosts)}</div>
     </div>
   );
-}
-
-function getMethod(Posts, setPosts) {
-  fetch("http://localhost:8081/getAllPosts")
-    .then((response) => response.json())
-    .then((data) => {
-      setPosts(data);
-      console.log(Posts);
-    });
-}
-
-function postMethod(Posts, setPosts) {
-  let x = getPostFromInput();
-  fetch("http://localhost:8081/post", {
-    method: "POST",
-    headers: {
-      obj_id: x.id,
-      obj_postTitle: x.postTitle,
-      obj_author: x.author,
-      obj_date: x.date,
-      obj_date_published: x.date_published,
-      obj_genres: x.genres,
-      obj_tags: x.tags,
-      obj_postContents: x.postContents,
-    },
-  }).then((data) => {
-    getMethod(Posts, setPosts);
-  });
 }
 
 const PostToDB = (Posts, setPosts) => {
@@ -177,7 +150,7 @@ function editPost(Posts, setPosts) {
   );
 }
 
-function getPostFromInput() {
+export function getPostFromInput() {
   return {
     id: 0,
     postTitle: document.getElementById("TitleTextBox").value,
