@@ -114,10 +114,11 @@ function convertPost(post){
             current_string = "";
             in_image = false;
         }
+        //Escaping Escape characters
         else if(post[i] == '\\' && (!(i == 0) && post[i-1] == '\\')){
             current_string += "\\";
         }
-        else if(post[i] == '*' && post[i+1] == '*'){
+        else if(post[i] == '*' && post[i+1] == '*' && (i != 0 && post[i-1] != "\\")){
             formatted_post.push({
                 type: (in_bold == true) ? "bolded" : "paragraph",
                 contents: current_string
