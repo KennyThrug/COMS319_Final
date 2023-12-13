@@ -39,7 +39,7 @@ export function renderSinglePost(post) {
             </div>
             <div>
                 <p>
-                    Post Contents: {post.postContents}
+                    Post Contents: {formatted_post.map(post_piece => interpretFormattedPost(post_piece))}
                 </p>
             </div>
         </div>
