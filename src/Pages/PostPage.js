@@ -37,8 +37,6 @@ export function renderSinglePost(post) {
                     <h3>
                         Date of Post: {post.date}
                     </h3>
-                    <h3>Genres: {post.genres}</h3>
-                    <h3>Tags: {post.tags}</h3>
                 </div>
                 <div>
                     {formatted_post.map(post_piece => interpretFormattedPost(post_piece))}
