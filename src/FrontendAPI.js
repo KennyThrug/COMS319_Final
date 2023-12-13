@@ -49,7 +49,7 @@ export function putMethod(Posts,setPosts,updatedPost){
 });
 }
 
-export function deleteOne(deleteid) {
+export function deleteOne(deleteid, Posts, setPosts) {
     console.log("Product to delete :", deleteid);
     console.log(JSON.stringify({ id: deleteid }));
     fetch("http://localhost:8081/api/delete", {
@@ -65,6 +65,7 @@ export function deleteOne(deleteid) {
                 const key = Object.keys(data);
                 const value = Object.values(data);
                 alert(key + value);
+                getMethod(Posts,setPosts);
             }
         });
     console.log("test");

@@ -1,8 +1,5 @@
-import { renderSinglePost } from "./PostPage";
-import React, { useState } from "react";
-import { postMethod, putMethod } from "../FrontendAPI";
-
-let Preview_Toggle = false;
+import React from "react";
+import { putMethod } from "../FrontendAPI";
 
 export function renderEditPostPage(Posts, setPosts) {
   return (

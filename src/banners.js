@@ -1,11 +1,11 @@
-import { STATE_POST_PAGE, STATE_CREATE_POST_PAGE, STATE_ABOUT_PAGE, STATE_LOGIN_PAGE, STATE_SINGLE_POST, STATE_EDIT_POST_PAGE } from './App'
+import { STATE_POST_PAGE, STATE_CREATE_POST_PAGE, STATE_ABOUT_PAGE, STATE_LOGIN_PAGE, STATE_SINGLE_POST, STATE_EDIT_POST_PAGE, STATE_DELETE_POST_PAGE } from './App'
 //Function for Top Banner
 export function createTopBanner(setPageId) {
     return (
         <div style={{ borderBottom: "solid", borderColor: "gray", position: "fixed", width: "100%" }}>
             <nav className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-6">
                 <div className="flex items-center flex-shrink-0 text-white mr-6" style={{ marginLeft: "13%" }}>
-                    <span className="font-semibold text-xl tracking-tight">Blog Name</span>
+                    <span className="font-semibold text-xl tracking-tight">Kenny & Austin's Blog (Final Project)</span>
                 </div>
                 <div className="block lg:hidden">
                     <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -25,6 +25,9 @@ export function createTopBanner(setPageId) {
                         </a>
                         <a href='#' onClick={() => setPageId(STATE_EDIT_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             Edit Post
+                        </a>
+                        <a href='#' onClick={() => setPageId(STATE_DELETE_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                            Delete Post
                         </a>
                         {/* The following Objects are not gone, but they currently have no functionality, so they are temporarily hidden for Phase 2*/}
                         {/* <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
