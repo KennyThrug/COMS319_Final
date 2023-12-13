@@ -1,5 +1,6 @@
 import React from "react";
 import { putMethod } from "../FrontendAPI";
+import { convertToFormat } from "./CreatePostPage";
 
 export function renderEditPostPage(Posts, setPosts) {
   return (
@@ -155,6 +156,6 @@ export function getPostFromInput() {
     date_published: document.getElementById("datePublishedTextBox").value,
     genres: [""],
     tags: [""],
-    postContents: document.getElementById("PostTextBox").value,
+    postContents: convertToFormat(document.getElementById("PostTextBox").value),
   };
 }

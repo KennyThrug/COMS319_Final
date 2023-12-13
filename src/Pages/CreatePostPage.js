@@ -179,7 +179,7 @@ export function getPostFromInput() {
   };
 }
 
-function convertToFormat(text){
+export function convertToFormat(text){
   let result = "";
   for(let i = 0; i < text.length; i++){
     //Both of the following numbers are character codes for Right Quote and Left Quote, which may be left over from copying from another program
