@@ -1,4 +1,4 @@
-import { STATE_POST_PAGE, STATE_CREATE_POST_PAGE, STATE_ABOUT_PAGE, STATE_LOGIN_PAGE, STATE_SINGLE_POST } from './App'
+import { STATE_POST_PAGE, STATE_CREATE_POST_PAGE, STATE_ABOUT_PAGE, STATE_LOGIN_PAGE, STATE_SINGLE_POST, STATE_EDIT_POST_PAGE } from './App'
 //Function for Top Banner
 export function createTopBanner(setPageId) {
     return (
@@ -22,6 +22,9 @@ export function createTopBanner(setPageId) {
                         </a>
                         <a href='#' onClick={() => setPageId(STATE_CREATE_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                             Create Post
+                        </a>
+                        <a href='#' onClick={() => setPageId(STATE_EDIT_POST_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                            Edit Post
                         </a>
                         {/* The following Objects are not gone, but they currently have no functionality, so they are temporarily hidden for Phase 2*/}
                         {/* <a href='#' onClick={() => setPageId(STATE_ABOUT_PAGE)} className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">

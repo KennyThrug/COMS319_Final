@@ -23,7 +23,7 @@ export function renderSinglePost(post){
         <div style={{ marginLeft: "30%", marginRight: "30%"}}>
             <div style={{ border: "solid" }} className="columns-2">
                 <h1>
-                    Post Title: {post.postTitle}
+                    Post Title: {post.postTitle} (ID: {post.id})
                 </h1>
                 <h2>
                     Author: {post.author}

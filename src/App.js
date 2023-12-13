@@ -5,6 +5,7 @@ import { renderCreatePostPage } from './Pages/CreatePostPage';
 import { renderAboutPage, renderOtherPage } from './Pages/AboutPage';
 import { createSideBanner, createTopBanner } from './banners';
 import { renderLoginPage } from './Pages/LoginPage';
+import { renderEditPostPage } from './Pages/EditPostPage';
 import { getMethod } from './FrontendAPI';
 import './App.css';
 
@@ -14,6 +15,7 @@ export const STATE_CREATE_POST_PAGE = 1;
 export const STATE_ABOUT_PAGE = 2;
 export const STATE_LOGIN_PAGE = 3;
 export const STATE_SINGLE_POST = 4;
+export const STATE_EDIT_POST_PAGE = 5;
 
 //Entrypoint of the app
 function App() {
@@ -65,6 +67,10 @@ function renderPage(PageID, posts, PostIndex,Preview,setPreview,Posts, setPosts)
   }
   if (PageID == STATE_SINGLE_POST) {
     return renderSinglePostFromArray(posts, PostIndex);
+  }
+  if(PageID == STATE_EDIT_POST_PAGE)
+  {
+    return renderEditPostPage(posts, setPosts);
   }
   return (
     <div>

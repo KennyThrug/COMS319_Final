@@ -71,7 +71,6 @@ app.put("/api/update", async (req, res) => {
     author: author,
     date:date,
     date_published:date_published,
-    genres: category,
     genres:genres,
     tags: tags,
     postContents: postContents
