@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
-import { renderAllPostPage, renderSinglePost, renderSinglePostFromArray } from './Pages/PostPage';
+import { renderAllPostPage, renderComments, renderImage, renderSinglePost, renderSinglePostFromArray } from './Pages/PostPage';
 import { renderCreatePostPage } from './Pages/CreatePostPage';
 import { renderAboutPage, renderOtherPage } from './Pages/AboutPage';
 import { createSideBanner, createTopBanner } from './banners';
@@ -31,8 +31,8 @@ function App() {
         Error: This should Never be visible
     </div>
 ));
-
   const [Posts, setPosts] = useState([]);
+  //Determines current post pictures
 
   React.useEffect(() =>
   {
@@ -68,7 +68,11 @@ function renderPage(PageID, posts, PostIndex,Preview,setPreview,Posts, setPosts)
     return renderLoginPage();
   }
   if (PageID == STATE_SINGLE_POST) {
-    return renderSinglePostFromArray(posts, PostIndex);
+    return (<div>
+      {renderSinglePostFromArray(posts, PostIndex)}
+      {/* {renderImage()} */}
+      {renderComments(posts,PostIndex)}
+      </div>);
   }
   if(PageID == STATE_EDIT_POST_PAGE)
   {
