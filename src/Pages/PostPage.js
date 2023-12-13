@@ -20,27 +20,27 @@ export function renderSinglePostFromArray(posts, index) {
 export function renderSinglePost(post) {
     let formatted_post = convertPost(post.postContents);
     return (
-        <div style={{ marginLeft: "15%", marginRight: "25%" }}>
-            <div> {/*Post Div*/}
-                <div style={{ border: "solid" }} className="columns-2">
-                    <h1>
-                        Post Title: {post.postTitle}
-                    </h1>
-                    <h2>
-                        Author: {post.author}
-                    </h2>
-                </div>
-                <div className="columns-2">
-                    <h2>
-                        Date Published: {post.date_published}
-                    </h2>
-                    <h3>
-                        Date of Post: {post.date}
-                    </h3>
-                </div>
-                <div>
-                    {formatted_post.map(post_piece => interpretFormattedPost(post_piece))}
-                </div>
+        <div style={{ marginLeft: "30%", marginRight: "30%"}}>
+            <div style={{ border: "solid" }} className="columns-2">
+                <h1>
+                    Post Title: {post.postTitle} (ID: {post.id})
+                </h1>
+                <h2>
+                    Author: {post.author}
+                </h2>
+            </div>
+            <div className="columns-2">
+                <h2>
+                    Date Published: {post.date_published}
+                </h2>
+                <h3>
+                    Date of Post: {post.date}
+                </h3>
+            </div>
+            <div>
+                <p>
+                    Post Contents: {post.postContents}
+                </p>
             </div>
         </div>
     )
