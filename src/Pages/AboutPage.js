@@ -14,10 +14,12 @@ export function renderAboutPage(){
                 Kenneth Epstein
                 <br></br>
                 kepstein@iastate.edu
+                <img src="images/aboutus/Kenny.jpg" style={{width: "15%"}}></img>
                 <br></br><br></br>
                 Austin Dart,
                 <br></br>
                 aedart@iastate.edu
+                <img src="images/aboutus/Austin.jpg" style={{width: "15%"}}></img>
             </p>
         </div>
     )
